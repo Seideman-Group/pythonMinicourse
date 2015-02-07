@@ -1,5 +1,6 @@
 print "Hello Class!" #This is a print statement, it outputs to the console
 
+###### STRINGS ######
 "This is a string" #A string is denoted by a set of double quotes
 'This is also a string' #Strings can also be defined with single quotes
 
@@ -28,6 +29,7 @@ print s[12:4:-1] # Going backwards means if reversing order of limits
 t = s[:6] + "not an int" + s[12:] #Strings are immutable so to add things on you have to create a new string
 print t
 
+###### NUMBER TYPES ######
 i = 2
 print i # To print just numbers just say print number
 print str(i) + " is an int object" # To print numbers with strings, convert the numbers to strings 
@@ -48,6 +50,8 @@ print math.sqrt(i) # For more complex operations import math module, can make in
 
 import cmath
 print cmath.sqrt(-2) # Cmath can, j is used to denote an imaginary number
+
+###### CONDITIONALS ######
 
 b = True # a bool object
 c = False # another bool object
@@ -89,3 +93,63 @@ if(not b):
 elif(c):
     print "Second" # If there is no else statement and none of the conditions are true then nothing happens
 
+###### LISTS ######
+
+l = [1,2,3,4,5,6,7,8,9,0] # a list
+print l[0] # acess the first element in a list
+l[0] = 10 # change the first element in a list
+print l
+l[0] = "puppy" # lists do not need to store the same type of objects
+l.append(42) # add an element to the end of a list
+print l
+l = l + [3,8,9] # to add multiple elements to the list
+print l
+l[:3] = [9,99,2] # replace elements
+print l
+l[:4] = [9,99,2] # replacing elements in list does not need to perserve size
+print l
+print min(l) # built in functions to find min/max of a function
+print max(l)
+print map(math.sin, l) # map will operate a function over the entire list
+
+l[:1] = "puppy" # inserting strings into a list as a slice results in the char list to be added not the string
+print l
+l[:5] = ["puppy"] # to fix give it a list of strings
+print l
+print max(l) # max finds the max value even if not the same type
+del l[1] # removes an item from the list
+print l
+
+for num in l[1:]: # lists can be iterated over
+    print num*2
+for num in l:
+    print num*2 # Operations perserve type be careful not to mix types in loops
+
+#for num in l:
+#    l.append("Time for Infinite loop") # be careful to not to append items to lists you are iterating over 
+#    print l[len(l)-1]
+
+for i  in range(10): # use range to create a list of numbers to iterate over 
+    print i
+
+for i  in range(5,10): # Sets begining and end points
+    print i
+
+for i  in range(0,10,2): # alters how big iteration step is
+    print i
+#
+#p = math.pi
+#for i in range(p): # can only use ints for range
+#    print i
+
+i = 0
+while(i < len(l)): #while loops iterate until a condital statment is no loger true
+    print l[i]
+    i = i +1
+#
+#i= 0
+#while(i < len(l)): #Make sure the iterator is actually increase or infinite loops will occur
+#    print l[i]
+
+L = [ i*2 for i in l] # Constructs a list with the first operation over the bounds of a for loop
+print L
