@@ -4,24 +4,24 @@ print "Hello Class!" #This is a print statement, it outputs to the console
 "This is a string" #A string is denoted by a set of double quotes
 'This is also a string' #Strings can also be defined with single quotes
 
-print "Hello " + "Class!" # + concatanates two strings
+print "Hello " + "Class!" # + concatenates two strings
 print "Welcome "*3 # *n copies the string n times
- 
+
 "It's always fun to write python code" # If you start with a double quote, the string must end with a double quote (single quotes will be interpreted as strings
 'It\'s always fun to write python code' # If you want to use the same quote marker in a string that you used to define, use\ before the quote
-#List more special charecters here?
+#List more special characters here?
 
 s = "I'm a string object!" # something = something else stores the something else into something
 print s
-print s[0] # Strings are list of charecters
+print s[0] # Strings are list of characters
 print s[len(s)-1] # To get how many objects are in a list use len()
-#print s[len(s)] # The last item in a list is len(list)-1 if you go above that you get an error 
+#print s[len(s)] # The last item in a list is len(list)-1 if you go above that you get an error
 print s[:5] # as lists strings can be sliced at the end,
-print s[6:] # at the begining
+print s[6:] # at the beginning
 print s[6:12] # in the middle
 print s[:-1] # and defined from the end
 
-print s[::2] # Can take any number interation
+print s[::2] # Can take any number iteration
 print s[::-1] #Even backwards
 
 print s[12:4:-1] # Going backwards means if reversing order of limits
@@ -32,9 +32,9 @@ print t
 ###### NUMBER TYPES ######
 i = 2
 print i # To print just numbers just say print number
-print str(i) + " is an int object" # To print numbers with strings, convert the numbers to strings 
+print str(i) + " is an int object" # To print numbers with strings, convert the numbers to strings
 
-print i/3 # integer divison always rounds down
+print i/3 # integer division always rounds down
 
 f = 2. # floats are used to store non-integer values. A decimal point is used to make them
 sf = 2e0 # so does the use of scientific notation
@@ -66,20 +66,20 @@ if(c):                  #check the first conditions, if false then go on
 else:                   # else ends the statement and if performed if none of the conditions are met
     print "I am false!"
 
-if(not b):              # not returns True if condtion is False
-    print "I am flase!"
+if(not b):              # not returns True if condition is False
+    print "I am false!"
 else:
     print "I am true!"
-    
+
 if(not c):
-    print "I am flase!"
+    print "I am false!"
 else:
     print "I am true!"
 
 if(b and c): # returns true if both are True
     print "We are both true!"
 elif (b or c): # If first condition is not met check this one;  or returns true if at least one of the conditions is true
-    print "One is true and one is flase"
+    print "One is true and one is false"
 else:
     print "We are both false!"
 
@@ -106,7 +106,7 @@ l = l + [3,8,9] # to add multiple elements to the list
 print l
 l[:3] = [9,99,2] # replace elements
 print l
-l[:4] = [9,99,2] # replacing elements in list does not need to perserve size
+l[:4] = [9,99,2] # replacing elements in list does not need to preserve size
 print l
 print min(l) # built in functions to find min/max of a function
 print max(l)
@@ -123,16 +123,16 @@ print l
 for num in l[1:]: # lists can be iterated over
     print num*2
 for num in l:
-    print num*2 # Operations perserve type be careful not to mix types in loops
+    print num*2 # Operations preserve type be careful not to mix types in loops
 
 #for num in l:
-#    l.append("Time for Infinite loop") # be careful to not to append items to lists you are iterating over 
+#    l.append("Time for Infinite loop") # be careful to not to append items to lists you are iterating over
 #    print l[len(l)-1]
 
-for i  in range(10): # use range to create a list of numbers to iterate over 
+for i  in range(10): # use range to create a list of numbers to iterate over
     print i
 
-for i  in range(5,10): # Sets begining and end points
+for i  in range(5,10): # Sets beginning and end points
     print i
 
 for i  in range(0,10,2): # alters how big iteration step is
@@ -143,7 +143,7 @@ for i  in range(0,10,2): # alters how big iteration step is
 #    print i
 
 i = 0
-while(i < len(l)): #while loops iterate until a condital statment is no loger true
+while(i < len(l)): #while loops iterate until a conditional statement is no longer true
     print l[i]
     i = i +1
 #
