@@ -16,7 +16,7 @@ xData = np.genfromtxt("032614_Ne_pt1s_20_poly3cal_1.txt",usecols=(0))
 allFiles = glob.glob('*cent567_VB1V*.txt')
 spectra  = []
 for f in allFiles:
-	spectra.append(Spectrum(f))
+    spectra.append(Spectrum(f))
 
 # Now let's sort them based on the appropriate number
 spectra.sort(key=operator.attrgetter('number'))
@@ -67,15 +67,15 @@ plt.show()
 ###################
 
 def test(xD,yD,num,num2,num3=10.0, num4=5, num5=4):
-	# plt.plot(xD,yD)
-	somePeaks  = scipy.signal.find_peaks_cwt(yD, np.arange(num,num2),noise_perc=num3)
-	otherPeaks = scipy.signal.argrelmax(yD,order = num4, mode="wrap")[0]
-	peaks = [p for p in somePeaks if set([]) != ( set(otherPeaks) & set(range(p-num5,p+num5)) ) ]
-	# plt.plot(xD[peaks],yD[peaks],'ro',markersize=10)
-	# plt.plot(xD[list(somePeaks)],yD[list(somePeaks)],'bs')
-	# plt.plot(xD[list(otherPeaks)],yD[list(otherPeaks)],'g^')
-	# plt.show()
-	return peaks
+    # plt.plot(xD,yD)
+    somePeaks  = scipy.signal.find_peaks_cwt(yD, np.arange(num,num2),noise_perc=num3)
+    otherPeaks = scipy.signal.argrelmax(yD,order = num4, mode="wrap")[0]
+    peaks = [p for p in somePeaks if set([]) != ( set(otherPeaks) & set(range(p-num5,p+num5)) ) ]
+    # plt.plot(xD[peaks],yD[peaks],'ro',markersize=10)
+    # plt.plot(xD[list(somePeaks)],yD[list(somePeaks)],'bs')
+    # plt.plot(xD[list(otherPeaks)],yD[list(otherPeaks)],'g^')
+    # plt.show()
+    return peaks
 
 #Still not the best for getting peaks
 peaks = test(xData, modData, 5, 10, 10, 10, 5)
@@ -97,25 +97,25 @@ plt.show()
 from scipy.optimize import curve_fit
 
 def gaussian(x,a,b,c):
-	return a*np.exp(-1.0*pow(x-b,2)/(2.0*c*c))
+    return a*np.exp(-1.0*pow(x-b,2)/(2.0*c*c))
 
 peaks = [p for p in peaks if (p > 10 and p < len(xData)-10)]
 
 reprodData = np.zeros(len(xData))
 
 for peak in peaks:
-	width = 10
-	lowerInd = peak-width
-	upperInd = peak+width
-	xD = xData[lowerInd:upperInd]
-	yD = modData[lowerInd:upperInd]
-	aGuess = modData[peak]
-	bGuess = xData[peak]
-	cGuess = 0.5
-	popt,pconv = curve_fit(gaussian, xD, yD, p0=[aGuess,bGuess,cGuess])
-	print popt
-	for ii in range(len(xData)):
-		reprodData[ii] += gaussian(xData[ii],popt[0],popt[1],popt[2])
+    width = 10
+    lowerInd = peak-width
+    upperInd = peak+width
+    xD = xData[lowerInd:upperInd]
+    yD = modData[lowerInd:upperInd]
+    aGuess = modData[peak]
+    bGuess = xData[peak]
+    cGuess = 0.5
+    popt,pconv = curve_fit(gaussian, xD, yD, p0=[aGuess,bGuess,cGuess])
+    print popt
+    for ii in range(len(xData)):
+        reprodData[ii] += gaussian(xData[ii],popt[0],popt[1],popt[2])
 
 plt.plot(xData, modData, xData,reprodData)
 plt.show()
@@ -146,6 +146,6 @@ def smooth(x,window_len=10,window='hanning'):
     lx0 = len(x0)
     if lx0 % 2 != 0:
         lx0=lx0+1
-	ly = len(y)
-	y  = y[lx0/2:ly-len(xn)/2]
+    ly = len(y)
+    y  = y[lx0/2:ly-len(xn)/2]
     return y
