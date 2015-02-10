@@ -6,7 +6,7 @@
 
 #filename1=("spectrum.dat") ######WHY WON"T THIS WORK WITH CANOPY??????
 
-#LoadData(file) is function that takes input a text file that is arranged in two columns and outputs a list of lists(x,y) 
+#LoadData(file) is function that takes input a text file that is arranged in two columns and outputs a list of lists(x,y)
 
 #data=LoadData(filename1)
 
