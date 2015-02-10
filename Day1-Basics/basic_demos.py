@@ -6,7 +6,7 @@ print "Hello Class!" #This is a print statement, it outputs to the console
 
 print "Hello " + "Class!" # + concatenates two strings
 print "Welcome "*3 # *n copies the string n times
- print "In python line indentation is important!"
+ #print "In python line indentation is important!"
 
 "It's always fun to write python code" # If you start with a double quote, the string must end with a double quote (single quotes will be interpreted as strings
 'It\'s always fun to write python code' # If you want to use the same quote marker in a string that you used to define, use\ before the quote
