@@ -1,3 +1,5 @@
+#!/usr/bin/env python2.7
+
 import glob, os, operator
 import numpy as np
 import scipy.signal
@@ -24,7 +26,8 @@ spectra.sort(key=operator.attrgetter('number'))
 # Data is now fully imported!
 # Let's make a basic plot of one of the data sets
 
-plt.plot(xData, spectra[30].data )
+plt.plot(xData, spectra[30].data)
+plt.title("Raw Data")
 plt.show()
 
 yData = spectra[30].data
@@ -37,11 +40,13 @@ yData = spectra[30].data
 
 yData_corr = scipy.signal.medfilt(yData, 5)
 plt.plot(xData,yData_corr)
+plt.title("Median Line Filter")
 
 # Savgol-Golay filter
 
 yData_sav = scipy.signal.savgol_filter(yData, 5, 1)
 plt.plot(xData,yData_sav)
+plt.title("Savitsky-Golay Filter")
 plt.show()
 
 # baseline subtraction
@@ -60,6 +65,7 @@ yData_base[bad] = baseline[bad]
 
 modData = yData_sav - baseline
 plt.plot(xData, modData, xData, yData-baseline)
+plt.title("Savitsky-Golay Filter, Baseline Subtracted")
 plt.show()
 
 ###################
@@ -82,6 +88,11 @@ peaks = test(xData, modData, 5, 10, 10, 10, 5)
 plt.plot(xData, modData)
 plt.plot(xData[peaks], modData[peaks],'ro')
 plt.show()
+
+def smooth(y, box_pts):
+    box = np.ones(box_pts)/box_pts
+    y_smooth = np.convolve(y, box, mode='same')
+    return y_smooth
 
 #Slightly different approach
 smoothModData = smooth(modData,50)
