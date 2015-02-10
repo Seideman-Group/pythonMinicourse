@@ -1,19 +1,28 @@
 #Import helper functions:
 
-from HelperFunctions import LoadData
+#from HelperFunctions import LoadData
 
 #First we will have a data file
 
-filename1=("spectrum.dat") ######WHY WON"T THIS WORK WITH CANOPY??????
+#filename1=("spectrum.dat") ######WHY WON"T THIS WORK WITH CANOPY??????
 
 #LoadData(file) is function that takes input a text file that is arranged in two columns and outputs a list of lists(x,y) 
 
-data=LoadData(filename1)
+#data=LoadData(filename1)
+
+
+
+#Learning Objective 1:Assigning a List
+
+data=[[100.0, 0.0], [250.0, 100.0], [380.0, 190.0], [400.0, 453.3], [450.0, 124.0], [500.0, 0.0], [600.0, 40.0], [700.0, 38.0], [800.0, 0.0], [900.0, 0.0], [910.0, 0.0], [920.0, 10.0], [930.0, 20.0], [940.0, 50.0], [944.0, 100.0], [945.0, 110.0], [946.0, 100.0], [947.0, 150.0], [948.0, 120.0], [950.0, 100.0]]
+
 print "The data is \n", data
 
 #Let's get a list of the energies.
 
 energies=[]
+
+#Learning Objective 2: Implement a loop
 for row in data:
     energies.append(row[0])
 
@@ -50,6 +59,7 @@ print "The absorbance is ", data[0][1]
 
 #Identify the min and max
 
+#Learning Objective 3: implementing and using a function
 #FindMax(data) takes a data, list of tuples, finds the maximum of the absorbance, and returns the tuple that corresponds to that point.
 
 from HelperFunctions import FindMax
@@ -81,6 +91,7 @@ print 'UV max ', UV_max
 
 
 #Maybe I want to put that little loop in function form so that it is more felxible
+#Learning Objective 3a: converting a chunk of coode into a felxible function that can be used multiple times.
 
 from HelperFunctions import FindEnergyBounds
 
