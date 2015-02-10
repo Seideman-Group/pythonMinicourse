@@ -6,15 +6,21 @@ print "Hello Class!" #This is a print statement, it outputs to the console
 
 print "Hello " + "Class!" # + concatenates two strings
 print "Welcome "*3 # *n copies the string n times
+ print "In python line indentation is important!"
 
 "It's always fun to write python code" # If you start with a double quote, the string must end with a double quote (single quotes will be interpreted as strings
 'It\'s always fun to write python code' # If you want to use the same quote marker in a string that you used to define, use\ before the quote
 #List more special characters here?
+'\n' # new line
+'\t' # tab
+'\\' # \
+'\"' # "
 
 s = "I'm a string object!" # something = something else stores the something else into something
 print s
 print s[0] # Strings are list of characters
-print s[len(s)-1] # To get how many objects are in a list use len()
+print len(s) # To get how many objects are in a list use len()
+print s[len(s)-1]
 #print s[len(s)] # The last item in a list is len(list)-1 if you go above that you get an error
 print s[:5] # as lists strings can be sliced at the end,
 print s[6:] # at the beginning
@@ -26,7 +32,7 @@ print s[::-1] #Even backwards
 
 print s[12:4:-1] # Going backwards means if reversing order of limits
 
-t = s[:6] + "not an int" + s[12:] #Strings are immutable so to add things on you have to create a new string
+t = s[:6] + "not an int" + s[12:] #Strings are immutable so to change the characters you need to make a new string
 print t
 
 ###### NUMBER TYPES ######
@@ -63,7 +69,7 @@ else:
 
 if(c):                  #check the first conditions, if false then go on
     print "I am true!"
-else:                   # else ends the statement and if performed if none of the conditions are met
+else:                   # else ends the statement and is performed if none of the conditions are met
     print "I am false!"
 
 if(not b):              # not returns True if condition is False
@@ -94,12 +100,12 @@ elif(c):
     print "Second" # If there is no else statement and none of the conditions are true then nothing happens
 
 ###### LISTS ######
-
+l = [] # an empty list
 l = [1,2,3,4,5,6,7,8,9,0] # a list
-print l[0] # acess the first element in a list
-l[0] = 10 # change the first element in a list
+print l[0] # access the first element in a list
+l[0] = 10 # change the first element in a list -> unlike strings normal lists are mutable
 print l
-l[0] = "puppy" # lists do not need to store the same type of objects
+l[0] = "puppy" # lists do not need to store the same type of objects. While it is compilable it generally not considered to be good practice
 l.append(42) # add an element to the end of a list
 print l
 l = l + [3,8,9] # to add multiple elements to the list
@@ -129,13 +135,13 @@ for num in l:
 #    l.append("Time for Infinite loop") # be careful to not to append items to lists you are iterating over
 #    print l[len(l)-1]
 
-for i  in range(10): # use range to create a list of numbers to iterate over
+for i  in range(10): # use range to create a list of numbers to iterate over (start at 0 and go until 10-1)
     print i
 
-for i  in range(5,10): # Sets beginning and end points
+for i  in range(5,10): # Sets beginning and end points (start at 5 and go until 10-1)
     print i
 
-for i  in range(0,10,2): # alters how big iteration step is
+for i  in range(5,10,2): # alters how big iteration step is, (start at 5 and go until 10-1, taking every second number)
     print i
 #
 #p = math.pi
