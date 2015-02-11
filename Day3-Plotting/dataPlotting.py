@@ -6,7 +6,7 @@ Change the plotting format to SVG in preferences
 #!/usr/bin/env python2.7
 # Change the directory before using this script
 
-import glob, os, operator, sys
+import glob, os, operator
 import numpy as np
 import scipy.signal
 import matplotlib.pyplot as plt
@@ -32,16 +32,16 @@ for f in allFiles:
 # Now that the data is loaded, let's move back to the root directory
 os.chdir(rootDir)
 
-# Now let's sort them based on the appropriate number
+# Let's sort them based on the appropriate number
 spectra.sort(key=operator.attrgetter('number'))
 
 # Data is now fully imported!
 # Let's make a basic plot of one of the data sets
-plt.plot(xData, spectra[30].data)
+plt.plot(xData, spectra[35].data)
 plt.title("Raw Data")
 plt.show()
 
-yData = spectra[30].data
+yData = spectra[50].data
 
 ##########################################
 # Noise  Correction and baseline fitting
@@ -69,7 +69,7 @@ plt.show()
 # Let's correct the baseline to make it a bit smoother
 for ii in range(50,300,30):
     baseline = scipy.signal.savgol_filter(baseline, ii+1, 2)
-baseline = baseline-np.ones(len(baseline))*10.0 #Shift it down a little
+baseline = baseline-10.0 # Shift it down a little
 
 plt.plot(xData,baseline, xData, yData)
 plt.title("Corrected Baseline")
@@ -82,12 +82,9 @@ plt.title("Savitsky-Golay Filter, Baseline Subtracted")
 plt.show()
 
 
-###################
-# Peak Finding
-###################
-
-
-#peaks  = scipy.signal.find_peaks_cwt(modData, np.arange(1,5),noise_perc=10)
+############################################################
+# Peak Finding - Check scipy signal library for more options
+############################################################
 
 # finds all local max in smoothed data set
 plt.gcf().set_size_inches(16.0,12.0)
@@ -100,27 +97,14 @@ plt.plot(xData, modData)
 plt.plot(xData[peaks], modData[peaks],'ro')
 plt.show()
 
-# Alternate smoothing function
-#def smooth(y, box_pts):
-#    box      = np.ones(box_pts)/box_pts
-#    y_smooth = np.convolve(y, box, mode='same')
-#    return y_smooth
-
-#Slightly different approach
-#smoothModData = smooth(modData,50)
-#plt.plot(xData, modData)
-#plt.plot(xData[peaks], modData[peaks],'ro')
-#plt.show()
-
 ###################################################
 # Curve Fitting - one of the most requested topics
 ###################################################
 
 from scipy.optimize import curve_fit
 
-#lorenzians
 def gaussian(x,A,x0,s):
-    return a*np.exp(-1.0*pow(x-x0,2)/(2.0*s*s))
+    return A*np.exp(-1.0*pow(x-x0,2)/(2.0*s*s))
 
 def lorentzian(x,A,G,x0):
     return (A/np.pi)*(0.5*G)/(pow(x-x0,2) + pow(0.5*G,2))
@@ -139,12 +123,13 @@ for peak in peaks:
     cGuess     = 0.50          # Peak width
     try:
         popt,pconv = curve_fit(lorentzian, xD, yD, p0=[aGuess,bGuess,cGuess])
+        print popt
+        for ii in range(len(xData)):
+            reprodData[ii] += lorentzian(xData[ii],popt[0],popt[1],popt[2])
     except:
         print "Error fitting peak at x =", xData[peak]
         next
-    print popt
-    for ii in range(len(xData)):
-        reprodData[ii] += lorentzian(xData[ii],popt[0],popt[1],popt[2])
+    
 
 plt.gcf().set_size_inches(16.0,12.0)
 plt.plot(xData, modData, xData,reprodData)
@@ -156,34 +141,18 @@ plt.plot(xData,reprodData+baseline,linewidth=2.0,color="black")
 plt.title("Fully fitted spectrum")
 plt.show()
 
-#Finally, a fully reconstructed spectrum
+# Finally, a fully reconstructed spectrum!
 
-#Convert to 2D array of spectra
+# In preparation for the next section...
+# Convert to 2D array of spectra
 
-#####################
-# A gift from Marty
-#####################
+data2D = np.zeros([len(spectra),len(spectra[0].data)])
 
-def smooth(x,window_len=10,window='hanning'):
-    if x.ndim != 1:
-        raise ValueError, "smooth only accepts 1 dimension arrays."
-    if x.size < window_len:
-        raise ValueError, "Input vector needs to be bigger than window size."
-    if window_len<3:
-        return x
-    if not window in ['flat', 'hanning', 'hamming', 'bartlett', 'blackman']:
-        raise ValueError, "Window is on of 'flat', 'hanning', 'hamming', 'bartlett', 'blackman'"
-    x0 = x[window_len-1:0:-1]
-    xn = x[-1:-window_len:-1]
-    s  = numpy.r_[x0,x,xn]
-    if window == 'flat': #moving average
-        w = numpy.ones(window_len,'d')
-    else:
-        w = eval('numpy.'+window+'(window_len)')
-    y   = numpy.convolve(w/w.sum(),s,mode='valid')
-    lx0 = len(x0)
-    if lx0 % 2 != 0:
-        lx0=lx0+1
-    ly = len(y)
-    y  = y[lx0/2:ly-len(xn)/2]
-    return y
+for ii in range(len(spectra)):
+    data2D[ii] = spectra[ii].data
+
+plt.pcolormesh(xData, np.arange(0,len(spectra)), data2D)
+plt.axis([min(xData),max(xData),0, len(spectra)])
+plt.xlabel(r'Wavenumber / cm$^{-1}$')
+plt.ylabel("Number")
+plt.show()
