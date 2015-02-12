@@ -5,6 +5,7 @@
 ########################################
 
 # create a file object - the thing you use to access/manipulate the file
+# slapping a nametag on it
 myFile=open("biphenylP16Tau.15T0-SinglePulse-Scale1.dat",'r')
 
 # step through each line of the file in a loop, loading the text into the variable 'dataLine'
