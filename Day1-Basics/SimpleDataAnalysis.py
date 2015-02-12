@@ -1,18 +1,6 @@
-#Import helper functions:
-
-#from HelperFunctions import LoadData
-
-#First we will have a data file
-
-#filename1=("spectrum.dat") ######WHY WON"T THIS WORK WITH CANOPY??????
-
-#LoadData(file) is function that takes input a text file that is arranged in two columns and outputs a list of lists(x,y) 
-
-#data=LoadData(filename1)
 
 
-
-#Learning Objective 1:Assigning a List
+#Learning Objective 1:Assigning a List of Lists
 
 data=[[100.0, 0.0], [250.0, 100.0], [380.0, 190.0], [400.0, 453.3], [450.0, 124.0], [500.0, 0.0], [600.0, 40.0], [700.0, 38.0], [800.0, 0.0], [900.0, 0.0], [910.0, 0.0], [920.0, 10.0], [930.0, 20.0], [940.0, 50.0], [944.0, 100.0], [945.0, 110.0], [946.0, 100.0], [947.0, 150.0], [948.0, 120.0], [950.0, 100.0]]
 
@@ -24,7 +12,7 @@ energies=[]
 
 #Learning Objective 2: Implement a loop
 for row in data:
-    energies.append(row[0])
+    energies.append(row[0]) #a lot going on here
 
 
 first_column = [ row[0] for row in data ]
@@ -68,11 +56,15 @@ maximum=FindMax(data)
 print "maximum=", maximum
 print "The maximum absorbance of this spectrum is ", maximum[1] , "at ", maximum[0], " nm"
 
-
+##Demo how does max(data) not work here??
 
 #Identify the min and max of the IR region, vis region, and UV region
 
-#
+#Let's make this an example exercise for the class.  Provide a commented blank file and organize it...
+
+
+
+
 UV_cutoff=380 #in nm
 
 #What is the index of the row number that corresponds to the IR cutoff?
