@@ -17,4 +17,5 @@ listOfData=[]
 for file in fileList:
 	print file.split()
 
-# well that's useless	
+# well that's useless - try a different delimeter
+#	print int(terms[-1].split(".")[0])
