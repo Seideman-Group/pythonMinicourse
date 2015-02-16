@@ -6,7 +6,7 @@ print "Error"
 print "Hello " + "Class!" # + concatenates two strings
 print "Welcome "*3 # *n copies the string n times
 
-# Goal of being able to write a Lortenzian function
+# Goal of being able to write a Lorentzian function
 
 # y(x) = 1/pi * A * (0.5*Gam)/((x-x0)^2 + (0.5*Gam)^2)
 

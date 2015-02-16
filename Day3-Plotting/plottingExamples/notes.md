@@ -30,6 +30,7 @@
 - Josh: 1D plots
 - Josh: van Duyne group spectra
 - Andy: 2D plots
+- Andy: subplots
 - Andy: loaf
 
 # Resources
