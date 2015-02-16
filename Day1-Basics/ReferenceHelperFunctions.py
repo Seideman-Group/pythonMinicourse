@@ -1,12 +1,12 @@
 ###############################################################################
-## HelperFunctions.py
+## ReferenceHelperFunctions.py
 ## Author: Lindsey R. Madison
 ## Date: 2/10/2014
 ##
 ## Purpose: This contains functions that were inteded for use in the script
-##          SimpleDataAnalysis.py
-##          HelperFunctions can be loaded into your main script with:
-##          from HelperFunctions import NameOfFunction
+##          ReferenceSimpleDataAnalysis.py
+##          ReferenceHelperFunctions can be loaded into your main script with:
+##          from ReferenceHelperFunctions import NameOfFunction
 ###############################################################################
 
 #Learning Objective 3: Implement and Use a function
@@ -16,17 +16,17 @@
 #FindMax is the function's name
 #dataList is the input variable. For this function to work as written it must be a list of lists 
 def FindMax(dataList):
-    #For each data point in the dataList, 
-    #if the second value (the absorbance) is greater than the current max value, 
-    #then save that as max_y and the corresponding max_x
-   
-    
-    
-    
-    
-                 
-    
-    return ReturnValues  #Return variables
+    #Initially set the maximum as a really small number
+    max_y=-100000000000 ###point of discussion 
+    #max_y=None  #Or this
+    #max_y=data[0][1]  #Or this
+    #For each data point in the dataList, if the second value is greater than the current max value, save that max_y and the corresponding max_x
+    for row in dataList:
+        if (row[1]>max_y):
+            max_x=row[0]
+            max_y=row[1]
+    #return max_y        #Why just return one value?
+    return max_x, max_y  #When we can return more than one value.
     
 
 
@@ -35,14 +35,13 @@ def FindMax(dataList):
 ## that inclusively correspond to those min/max values for the variable that corresponds to the max wavelength (which is a list of lists) 
 
 def FindEnergyBounds(min,max,data):
-#Here is one approach you could try:
-#For each row in the data, 
-#if the first value in that row (the wavelength) is less than my max wavelength,
-#then my max wavelength must be bigger. Thus I'll increment a counter
-
-#if the first value in that row (the wavelength) is NOT larger than my min wavelength,(it is smaller)
-#then my minimum index must be bigger. Thus, I'll increment a different counter
-
-#This approach is just one solution of many. If your return values are correct and you use a different algorithm, that is perfectly fine!
-
-    return ReturnValues
+    i=0
+    min_i=0
+    max_i=0
+    for row in data:
+        i=i+1
+        if row[0]<=max:
+            max_i=i
+        if not row[0]>min:
+            min_i=i
+    return min_i, max_i

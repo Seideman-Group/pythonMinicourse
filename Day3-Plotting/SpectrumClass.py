@@ -4,6 +4,7 @@ import os
 import numpy as np
 
 # Define a custom class to organize all data
+# This class is designed to work specifically with the files provided in R6G_CWUHVTERS
 class Spectrum:
     def __init__(self,filename):
         if not os.path.isfile(filename):
