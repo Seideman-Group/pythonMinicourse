@@ -7,9 +7,14 @@ These are the most common coding styles that you may encounter when looking for
 examples of plots online.
 '''
 
+### Resources
+# FAQ: http://matplotlib.org/faq/usage_faq.html
+# Axes commands: http://matplotlib.org/api/axes_api.html
+
 import matplotlib.pyplot as plt
 import pylab as pl # matplotlib + numpy in one namespace
 import numpy as np
+
 
 
 ### First way: quick and dirty
@@ -21,7 +26,7 @@ y = np.tan(x)
 
 # plot the data: memorize this basic sequence
 plt.plot(x, y)                    # 1: plot data
-plt.title("Quick and dirty way")  # 2: decorate plot
+plt.title("Quick and dirty way")  # 2: decorate plot (optional)
 plt.xlabel("x")
 plt.ylabel("y")
 plt.show()                        # 3: draw plot
@@ -54,9 +59,9 @@ del x, y # clear data variables from earlier; they will soon be born again
 # all the numpy and plotting commands are available under pylab (pl).
 x = pl.linspace(0, 4*pl.pi, 101)
 y = pl.tan(x)
-
 pl.plot(x, y)
 pl.title("pylab")
 pl.xlabel("x")
 pl.ylabel("y")
 pl.show()
+print("foo")
