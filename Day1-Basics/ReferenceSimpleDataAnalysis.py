@@ -63,7 +63,8 @@ print "\n The last element in data is ", data[-1]
 # # To access the wavelength of a data point we want the first 
 # # element of the data point: data[0][0]
 
-### Task 1b. Print the wavelength of that first data point and the  absorbance  on two separate lines.
+### Task 1b. Print the wavelength of that first data point and the 
+# # absorbance on two separate lines.
 
 print "The wavelength of that first data point is ", data[0][0], " nm"
 print "The absorbance is ", data[0][1]

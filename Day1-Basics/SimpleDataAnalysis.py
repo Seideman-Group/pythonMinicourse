@@ -63,12 +63,13 @@ for row in data:
 # # To access the wavelength of a data point we want the first 
 # # element of the data point: data[0][0]
 
-### Task 1b. Print the wavelength of that first data point and the  absorbance  on two separate lines.
+### Task 1b. Print the wavelength of that first data point and the
+# # absorbance on two separate lines.
 
 #print "The wavelength of that first data point is ", data[0][0], " nm"
 #print "The absorbance is ", data[0][1]
 
-### Task 2: Partition the array into a 1x1 array (list) of 
+### Task 2: Partition the array into a 1x1 array (list) of
 # #wavelengths and a 1x1 array (list) of absorbances.
 
 # # Let us start by getting a list of the wavelengths.
