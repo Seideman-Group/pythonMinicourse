@@ -6,16 +6,18 @@ import matplotlib.pyplot as plt
 
 ### References
 # color maps
+# - `plt.colormaps()` command gives a list
 # - http://wiki.scipy.org/Cookbook/Matplotlib/Show_colormaps
 # types of interpolation
 # - http://matplotlib.org/examples/images_contours_and_fields/interpolation_methods.html
+# annotation (arrows)
+# - http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes.annotate
 # contour plots
 # - http://matplotlib.org/examples/pylab_examples/contour_demo.html
-# pyplot documentation
-# - http://matplotlib.org/api/pyplot_api.html
+# font properties
+# - http://matplotlib.org/api/font_manager_api.html#matplotlib.font_manager.FontProperties
 # nice examples
 # - http://nbviewer.ipython.org/github/goFrendiAsgard/scientific-python-lectures/blob/master/Lecture-4-Matplotlib.ipynb
-# - http://matplotlib.org/gallery.html
 
 ### Function definitions
 
@@ -63,7 +65,7 @@ dim = 101
 # z Data are a bunch of randomized 2D Lorentzians
 zData = np.zeros((dim, dim)) # (dim, dim) is a tuple, hence the extra parens
 for ii in range(0, 20):
-    zData += Lorentz2D(ri(0, dim), ri(8, 12), ri(0, dim), ri(8, 12), dim)
+    zData += Lorentz2D(ri(1, dim), ri(8, 12), ri(0, dim), ri(8, 12), dim)
 
 
 ### Plot zData
@@ -100,8 +102,8 @@ plt.show()
 ### Contour plot
 
 # set up x and y data
-x = np.linspace(0, 10, 101)
-y = np.linspace(0, 10, 101)
+x = np.linspace(0, 10, dim)
+y = np.linspace(0, 10, dim)
 xData, yData = np.meshgrid(x, y)
 
 fig = plt.figure()
@@ -113,6 +115,19 @@ levels = np.linspace(0, 0.01, 11)
 ax.imshow(zData, origin="lower", cmap=plt.get_cmap("Reds"), extent=[0, 10, 0, 10])
 C = ax.contour(xData, yData, zData, levels, cmap=plt.get_cmap("Blues"), linewidths=(2))
 fig.colorbar(C)
+
+# find highest peak and coordinates
+coord = np.unravel_index(zData.argmax(), zData.shape) # returns (y index, x index)
+xp, yp = x[coord[1]], y[coord[0]]
+
+# save some space
+from matplotlib.font_manager import FontProperties as fp
+
+ax.annotate("Best Peak", xy=(xp, yp),  xycoords="data",
+            xytext=(-70, -50), textcoords="offset points",
+            arrowprops=dict(arrowstyle="->"),
+            fontproperties=fp(size=16, weight="bold")
+            )
 
 decorateAxes(ax)
 makeOutputs(fig, "2D_contour")

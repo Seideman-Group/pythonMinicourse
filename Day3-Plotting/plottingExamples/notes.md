@@ -6,9 +6,9 @@
 
 # Sometimes there is more than one way to do the same thing.
 - Examples of plotting sin(x) (`moreThanOneWayToDoIt.py`)
-  - matplotlib
+  - basic matplotlib
+  - manipulating figure, axis objects
   - pyplot
-  - example with figure, axis objects
 - What are the modules involved?
   - matplotlib: plotting library designed to work with numpy/scipy
   - pyplot: a MATLABesque container module that rolls matplotlib/numpy/scipy into one
@@ -33,5 +33,6 @@
 - Andy: loaf
 
 # Resources
-- Gallery (fancy examples): 
+- Gallery (fancy examples): http://matplotlib.org/gallery.html
 - more basic examples: http://matplotlib.org/users/screenshots.html
+- http://matplotlib.org/api/pyplot_api.html
