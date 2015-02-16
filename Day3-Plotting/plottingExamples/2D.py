@@ -133,18 +133,3 @@ decorateAxes(ax)
 makeOutputs(fig, "2D_contour")
 
 plt.show()
-
-## plot zData with xData and yData
-# x and y points need to be matrices
-### Things to include
-# imshow
-# matshow
-# plotting data types
-  # just a matrix (e.g. image)
-  # matrix with known x and y ranges
-  # 3D data
-# 2D plotting functions
-  # imshow/matshow
-  # pgrid
-# color maps and link to list
-# contour plot
