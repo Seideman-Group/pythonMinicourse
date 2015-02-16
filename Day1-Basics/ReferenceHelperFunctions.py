@@ -26,22 +26,29 @@ def FindMax(dataList):
             max_x=row[0]
             max_y=row[1]
     #return max_y        #Why just return one value?
-    return max_x, max_y  #When we can return more than one value.
+    return max_x, max_y  #When we can return more than one.
     
 
 
-## Bonus Learning Objective 3a: converting a chunk of coode into a felxible function that can be used multiple times.
-## FindEnergyBounds takes in the min and the max for some region of wavelengths and returns indexes of a list of lists (a.k.a. data)
-## that inclusively correspond to those min/max values for the variable that corresponds to the max wavelength (which is a list of lists) 
+### Bonus Learning Objective 3a: converting a piece of 
+# # code into a felxible function that can be used multiple
+# # times.
 
-def FindEnergyBounds(min,max,data):
-    i=0
-    min_i=0
-    max_i=0
-    for row in data:
-        i=i+1
-        if row[0]<=max:
-            max_i=i
-        if not row[0]>min:
-            min_i=i
+# # FindEnergyBounds takes in the min and the max wavelength (nm) 
+# # for some region of EM radiation and returns indexes of a list of 
+# # lists (a.k.a. that variable data) that inclusively corresponds
+# # to the min/max wavelengths. 
+
+def FindEnergyBounds(min_wl,max_wl,data):
+    i=0   #index "i" will just be counting my rows in my data.
+    min_i=0   #min_i will be the index of the lowest wavelength in the range.
+    max_i=0   #max_i will be the index of the highest wavelength in the range.
+    for row in data:   #loop through the data
+        i=i+1         # increment the indexer as we go.
+        if row[0]<=max_wl:  #if the wvlngth of our current row is < or = the max_wl...
+            max_i=i         #...then max_i can be assigned to our current index value.
+        if not row[0]>min_wl:  #if the wvlngth of our current row is not > min_wl...
+                                # (aside: logic-wise, this if statement is very similar 
+                                # to the first if statement.)
+            min_i=i         #...then min_i is assigned to our current index value.
     return min_i, max_i
