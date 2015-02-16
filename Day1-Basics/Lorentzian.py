@@ -1,45 +1,26 @@
-import math
-#previous work
-# Lorentz function is defined defined as 1/pi * A * 1/2Gam/((x-x0)^2 +(1/2Gam)**2)
-# write a for loop that can get the values of a lorentzian centered at 5.0 and a width of 2.0 and A = pi from 0 to 10 with a numerical step of 0.01
-#for i in range(10*100+1):
-#    print str(i*0.01) + " \t " + str(1.0/((i*0.01-5.0)**2 + (1.0)**2 ))
+# HOMEWORK make 2 functions one to make a loretnzian approx for arb, bounds, and step size and parameters, and a function taht can check it
+from math import pi
 
-# Using the definition of the Lortenzian you did in the last exercise to calculate the area under a Lorentzian while its value is >= 1e-3
-#x = 5.0
-#s = 0.0
-#while(1.0/((x-5.0)**2 + (1.0)**2) >= 1e-8):
-#    s = s + 1.0/((x-5.0)**2 + (1.0)**2) * 0.001
-#    x = x + 0.001
-#print s * 2 - 0.001
+def lorentz(x, A, x0, gam):
+    return 1/pi * A * 0.5*gam/((x-x0)**2 + (gam*0.5)**2) # Go over this?
 
-def lorenz(x, center, width, peakhieght):
-    return 1.0/math.pi * (0.5*width) / ((x-center)**2 + (0.5*width)**2) * peakhieght*(width*math.pi/2)
-
-def makeLorenz(center, width, peakhieght, tol, step):
-    x = center
+def genLoretz(A,x0,gam,lb,ub,step):
     lor = []
-    xvals=[]
-    while(lorenz(x,center, width, peakhieght) >= tol):
-        lor.append(lorenz(x,center, width, peakhieght))
-        x = x + step
-    lor_copy = []
-    lor_copy[:] = lor[:]
-    lor.reverse()
-    lor[len(lor)-1:] = lor_copy[:]
-    x = [i*step - step*(len(lor)-1)/2.0 + center for i in range(len(lor)) ]
-    return x, lor
+    invstep = int(1.0/step) # make the float an int
+    for x in range(lb*invstep, ub*invstep, 1):
+        lor.append(lorentz(x*step,A,x0,gam))
+    return lor
 
-def integrate(lor, step):
-    s = 0
-    for num in lor:
-        s = s + num*step
-    return s
-
-import matplotlib.pyplot as plt
-x, lor = makeLorenz(1.0,2.0,3.0,1e-5,.001)
-print integrate(lor, 0.001)
-print lor[len(lor)/2-5:len(lor)/2+5]
-plt.plot(x, lor)
-plt.axis([-4,6,0,3.1])
-plt.show()
+def checkLorntz(lor, A, step):
+    s = 0.0
+    for l in lor:
+        s = s + l * step
+    print s
+    if( abs(A-s) < A * 0.01):
+        print "Lorentz function Approximation is great!"
+    elif(abs(A-s) >  A * 0.1):
+        print "Lorentz function approximation is bad, please try again"
+    else:
+        print "Lorentz function approximation is okay, may need to be more accurate"
+    
+checkLorntz(genLoretz(1.0,1.0,1.0,-90,89, 0.1), 1.0,0.1)

@@ -2,6 +2,8 @@
 "This is a string" #A string is denoted by a set of double quotes
 'This is also a string' #Strings can also be defined with single quotes
 
+print "This is a string" # To Print strings just use print
+
 "Hello " + "Class!" # + concatenates two strings
 "Welcome "*3 # *n copies the string n times
  #print "In python line indentation is important!"
@@ -38,6 +40,7 @@ i = 2   # An int object is a number without a decimal point
 
 print i # To print ints just say print and then the int
 print str(i) + " is an int object" # To print ints with strings, convert the ints to strings using str()
+print i, "is an int object"
 
 2/3 == 0 # Is always true; integer division always rounds down
 
@@ -47,7 +50,7 @@ f = 2.0 # A float object
 
 print f # To print floats just say print and then the float
 print str(f) + " is a float object" # To print floats with strings, convert the floats to strings using str()
-
+print f, "is an float object"
 1.0/2.0  = 0.5 # Float division gives exact results (Within computational error)
 1.0//2.0 = 0.0 # To get the integer division value use //, but the answer will still be a float
 1/2.0    = 0.5 # If there are any floats in an operation the result will always be a float
@@ -88,7 +91,7 @@ z = 1.1 + 1.0j # A complex object
 
 print z # To print floats just say print and then the complex; Will always print in the form (1.1+1j)
 print str(z) + " is a complex object" # To print floats with strings, convert the floats to strings using str()
-
+print z, "is a complex object"
 z - 1.0j = (1.1+0j) # If there is a complex number in the operation the answer will be a complex number
 
 ########   BOOLEANS   ########
@@ -97,7 +100,7 @@ b = False # The other bool object
 
 print b # To print bools just say print and then the bool
 print str(b) + " is a bool object" # To print booleans with strings, convert the booleans to strings using str()
-
+print b, "is a complex object"
 #Boolean operators
 True  and  True = True  # and returns true if both conditions are true
 True  and False = False
@@ -157,6 +160,7 @@ l = ["puppy",1,2,3,4,5,6,7,8,9,0] # a list can contain multiple types, This is c
 
 print l # To print a list use print
 print str(l) + " is a list" # To print lists with strings, convert the lists to strings using str()
+print l, "is a list"
 
 l[:5]   # returns a list slice from the beginning to 4th (5-1) element
 l[6:]   # returns a list slice from the 6th element to the end of the string
