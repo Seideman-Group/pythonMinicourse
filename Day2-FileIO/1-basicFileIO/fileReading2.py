@@ -14,6 +14,8 @@ for dataLine in myFile.readlines():
 	
 	#split the line of text into a list of each term, by default 'split()' separates things by whitespace
 	listOfTerms=dataLine.split()
+	#split by commas
+
 
 	# let's do something more interesting here:
 	print listOfTerms[0], float(listOfTerms[2])-float(listOfTerms[1])

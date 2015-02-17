@@ -257,9 +257,41 @@ elif(False):                    # Fails check goes to next
     print "Will never happen"
 elif(False):                    # Fails check goes to next
     print "Will never happen"
-                                # No else exits statement without executing anything
+                               # No else exits statement without executing anything
 
 ########  FUNCTIONS  ########
-# SCOPE?
-# Optional Args?
-# return statements?
+# Scope
+x = 1.0 # Outside a function call can be set
+def test():
+    print x # Inside a function x is no longer defined (x is not within the scope
+    x = 1.5 # You can then define x within the funtion
+    print "Inside the function x is ",x # s has this value within the functoion itself
+print "Outside the function x is ",x # Outside x is the orignal value
+test() # running test
+print "Even after running the function, x is ",x # does not affect the value of x outside the function (The scope is not the same)
+
+# Arguments
+def test(x, y=0.0, z=0.0): # x is a mandatory argumet, while y and z are optional defaulting to 0
+    from math import sqrt
+    print "x:", x
+    print "y:", y
+    print "z:", z
+    print sqrt(x**2 + y**2 + z**2)
+test(1.0)         # Call test setting x positionally
+test(1.0,2.0)     # Call test setting x and y positionally
+test(1.0,2.0,3.0) # Call test setting x,y and z positionally
+test(1.0, z = 3.0)# Call test setting x postionally and z by name
+test(z = 3.0, x=1.0, y=2.0) # Call test setting x, y, and z by name
+
+# Retrun Statements
+def test():
+    return 5.0
+x = test() # Setting a varialbe to a return of a function
+print x
+x, y = test() # Not allowed return statments must match the number of items you are trying to set
+def test2():
+    return 10,10.0
+x = test2()    # Allowed because a tuple is returned implicitly in test2, this is not considered great practice in python coding
+x, y = test2() # Allowed since number of varialbles match
+print type(x) # Type perserved from the order
+print type(y)

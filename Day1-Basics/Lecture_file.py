@@ -1,5 +1,6 @@
+# Basics of Strings
 print "Hello Class!"
-print "Error"
+ print "Error"
 "This is a string" #A string is denoted by a set of double quotes
 'This is also a string' #Strings can also be defined with single quotes
 
@@ -11,24 +12,25 @@ print "Welcome "*3 # *n copies the string n times
 # y(x) = 1/pi * A * (0.5*Gam)/((x-x0)^2 + (0.5*Gam)^2)
 
 # What are the parameters
-x0  = 2
-Gam = 1
-A   = 1
 
 
+# Get pi for the lorentz function
 
-# Make Calculation Easier make 1/2 Gam the param gam2
 
-# Get pi
+# What point do we want to calculate?
 
-# Find for a point
 
-# Basic list storage
+# Calculate the value of that function at that point.
 
-# Store to a list
 
-# Define Function?
+# Store values in a list
 
-# Do multiple times
 
-# Integration Check
+# For loop examples to add multiple values to lor
+
+
+# Integration
+
+
+# Check the accuracy of the lorentz approx with conditionals
+
