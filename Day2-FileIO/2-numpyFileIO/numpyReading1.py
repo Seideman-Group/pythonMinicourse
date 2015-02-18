@@ -15,6 +15,8 @@ myData=np.loadtxt("biphenylP16Tau.15T0-SinglePulse-Scale1.dat")
 # take a look at the shape of what you loaded
 print myData.shape
 
+#numpy vector is similar to a list
+
 # try printing, notice it is automatically truncated
 print myData
 
