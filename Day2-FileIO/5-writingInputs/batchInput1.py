@@ -5,17 +5,19 @@ import numpy as np
 
 placeHolder="$$$"
 
-desiredValues=['50','100','250']
+desiredValues=range(100,200,25)
+
+templateFile=open("biphenyl-SP-TZdp-0.0-template.in",'r')
+templateData=templateFile.readlines()
+templateFile.close()
 
 for val in desiredValues:
-	templateFile=open("biphenyl-SP-TZdp-0.0-template.in",'r')
-	outFile=open("qchemInput-"+val+".in",'w')
+	outFile=open("qchemInput-"+str(val)+".in",'w')
 	
-	for line in templateFile.readlines():
+	for line in templateData:
 		if (placeHolder in line):
-			outFile.write(line.replace(placeHolder,val))
+			outFile.write(line.replace(placeHolder,str(val)))
 		else:
 			outFile.write(line)
 
 	outFile.close()
-	templateFile.close()

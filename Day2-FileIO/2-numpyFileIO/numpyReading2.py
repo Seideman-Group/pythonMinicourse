@@ -21,6 +21,11 @@ np.savetxt("dataSliced.out",myData[:,0:2])
 myData[:,1]=np.sqrt(myData[:,1])
 
 
+newDataCol1=np.sin(data[:,1])
+newDataCol2=np.sin(data[:,2])
+
+print newDataCol2-newDataCol1
+
 np.savetxt("dataEdited.out",myData[:,0:2])
 
 ### quiz - can you print just the first 20 rows? how about the last 20 rows?
