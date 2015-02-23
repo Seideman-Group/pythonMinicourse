@@ -1,8 +1,7 @@
 #!/usr/bin/env python2.7
-
-import numpy as np
-from numpy.random import randint as ri
-import matplotlib.pyplot as plt
+'''
+This script creates a series of 2D plots of the same set of data.
+'''
 
 ### References
 # color maps
@@ -18,6 +17,12 @@ import matplotlib.pyplot as plt
 # - http://matplotlib.org/api/font_manager_api.html#matplotlib.font_manager.FontProperties
 # nice examples
 # - http://nbviewer.ipython.org/github/goFrendiAsgard/scientific-python-lectures/blob/master/Lecture-4-Matplotlib.ipynb
+
+import matplotlib.pyplot as plt
+import numpy as np
+from numpy.random import randint as ri
+
+
 
 ### Function definitions
 
@@ -49,15 +54,17 @@ def decorateAxes(ax):
 
 def makeOutputs(fig, baseName):
     '''
-    Creates .png and .pdf files
+    Creates .png and .pdf files of a figure
     '''
 
+    # you can call plt.savefig() to save the current figure, or to be safe you
+    # can call fig.savefig() on a particular figure object
     fig.savefig(baseName + ".pdf", format="pdf")
     fig.savefig(baseName + ".png", format="png")
 
 
 
-# Set up data
+### Set up data
 
 # dimension of (square) data
 dim = 101
@@ -68,7 +75,8 @@ for ii in range(0, 20):
     zData += Lorentz2D(ri(1, dim), ri(8, 12), ri(0, dim), ri(8, 12), dim)
 
 
-### Plot zData
+
+### Plot zee data
 
 fig = plt.figure()
 ax = fig.add_subplot(111)
@@ -77,7 +85,7 @@ ax.imshow(zData, origin="lower", cmap=plt.get_cmap("copper"), extent=[0, 10, 0, 
 
 decorateAxes(ax)
 
-# have to save figures first, then call plt.show()
+# IMPORTANT: have to save figures first, then call plt.show()
 makeOutputs(fig, "2D_imshow")
 
 plt.show()
