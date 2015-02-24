@@ -19,12 +19,15 @@ Note: Also, Change the directory before using this script
 
 # Import the x-axis
 # Load all spectra into an array, first get all file names, then create Spectrum objects
-
+# If on a Mac/Linux Machine, use this line:
+# xData = np.genfromtxt("R6G_CWUHVTERS/032614_Ne_pt1s_20_poly3cal_1.txt",usecols=(0))
+# Windows Users use this one:
 
 
 
 # Let's sort them based on the appropriate number
-
+# import operator as op
+# spectra.sort(key=op.attrgetter('number'))
 
 
 
@@ -75,7 +78,7 @@ Note: Also, Change the directory before using this script
 
 
 
-#plt.plot(xData,baseline, xData, yData)
+#plt.plot(xData,baseline)
 #plt.title("Corrected Baseline")
 #plt.show()
 
@@ -84,7 +87,7 @@ Note: Also, Change the directory before using this script
 
 
 
-#plt.plot(xData, modData, xData, yData-baseline)
+#plt.plot(xData, modData)
 #plt.title("Savitsky-Golay Filter, Baseline Subtracted")
 #plt.show()
 
@@ -126,7 +129,7 @@ Note: Also, Change the directory before using this script
 #plt.show()
 
 #plt.gcf().set_size_inches(16.0,12.0)
-#plt.plot(xData, yData,)
+#plt.plot(xData, yData)
 #plt.plot(xData,reprodData+baseline,linewidth=2.0,color="black")
 #plt.title("Fully fitted spectrum")
 #plt.show()

@@ -10,7 +10,8 @@ class Spectrum:
         if not os.path.isfile(filename):
             raise Exception("Spectrum object needs a valid filename")
         self.source     = filename
-        modFilename = filename.replace("R6G_CWUHVTERS/","")
+        # modFilename = filename.replace("R6G_CWUHVTERS/","")
+        # modFilename = filename.replace("R6G_CWUHVTERS\\","")
         info            = modFilename.split('_')
         self.date       = [info[0][i:i+2] for i in range(0,len(info[0]),2)]
         self.surface    = info[2]
