@@ -24,20 +24,24 @@ from SpectrumClass import Spectrum
 
 # Import the x-axis
 # Load all spectra into an array, first get all file names, then create Spectrum objects
-'''
-xData = np.genfromtxt("R6G_CWUHVTERS/032614_Ne_pt1s_20_poly3cal_1.txt",usecols=(0))
 
-allFiles = glob.glob('R6G_UHVTERS/*cent567_VB1V*.txt')
+# If on a Mac/Linux Machine, use this line:
+# xData = np.genfromtxt("R6G_CWUHVTERS/032614_Ne_pt1s_20_poly3cal_1.txt",usecols=(0))
+# Windows Users use this one:
+# xData = np.genfromtxt("R6G_CWUHVTERS\\032614_Ne_pt1s_20_poly3cal_1.txt",usecols=(0))
+
+'''
+##Windows vs Mac difference
+allFiles = glob.glob('R6G_CWUHVTERS/*cent567_VB1V*.txt')
 spectra = []
 for f in allFiles:
 	spectra.append(Spectrum(f))
 '''
 
 # Let's sort them based on the appropriate number
-'''
-import operator as op
-spectra.sort(key=op.attrgetter('number'))
-'''
+# import operator as op
+# spectra.sort(key=op.attrgetter('number'))
+
 
 # Let's make a basic plot of one of the data sets
 '''
@@ -89,7 +93,7 @@ for ii in range(51,300,30):
 baseline = baseline - 10.0
 '''
 
-#plt.plot(xData,baseline, xData, yData)
+#plt.plot(xData,baseline)
 #plt.title("Corrected Baseline")
 #plt.show()
 
@@ -97,7 +101,7 @@ baseline = baseline - 10.0
 '''
 modData = yData_sav - baseline
 '''
-#plt.plot(xData, modData, xData, yData-baseline)
+#plt.plot(xData, modData)
 #plt.title("Savitsky-Golay Filter, Baseline Subtracted")
 #plt.show()
 
@@ -130,14 +134,14 @@ reprodData = np.zeros(len(xData))
 print "Now fitting..."
 for peak in peaks:
 	width = 10
-	lowerInd = peak-width
-	upperInd = peak+width
+	lowerInd = peak - width
+	upperInd = peak + width
 	xD = xData[lowerInd:upperInd]
 	yD = modData[lowerInd:upperInd]
 	aGuess = modData[peak]
 	bGuess = xData[peak]
 	cGuess = 0.5
-	popt,pconv = curve_fit(lorentzian, xD, yD p0=[aGuess,bGuess,cGuess])
+	popt,pcov = curve_fit(lorentzian, xD, yD p0=[aGuess,bGuess,cGuess])
 	print popt
 	for ii in range(len(xData)):
 		reprodData[ii] += lorentzian(xData[ii],popt[0],popt[1],popt[2])
