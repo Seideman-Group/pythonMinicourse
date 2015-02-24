@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 # you can't have one without the other
 import numpy as np
 
-### Prepare the data to plot ###
+### Prepare the data to plot
 
 # This is the variable part. In general you either have data from somewhere to
 # plot, or make it up.

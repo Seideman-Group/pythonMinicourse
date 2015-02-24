@@ -79,15 +79,16 @@ for ii in range(0, 20):
 ### Plot zee data
 
 fig = plt.figure()
-ax = fig.add_subplot(111)
+ax = fig.add_subplot(1, 1, 1)
 
-ax.imshow(zData, origin="lower", cmap=plt.get_cmap("copper"), extent=[0, 10, 0, 10])
+ax.imshow(zData, origin="lower", cmap=plt.get_cmap("Reds"), extent=[0, 10, 0, 10])
 
 decorateAxes(ax)
 
 # IMPORTANT: have to save figures first, then call plt.show()
 makeOutputs(fig, "2D_imshow")
 
+fig.set_size_inches(8, 8)
 plt.show()
 
 
@@ -97,12 +98,13 @@ plt.show()
 fig = plt.figure()
 ax = fig.add_subplot(111)
 
-ax.imshow(zData, interpolation="nearest", origin="lower", cmap=plt.get_cmap("copper"), extent=[0, 10, 0, 10])
+ax.imshow(zData, interpolation="none", origin="lower", cmap=plt.get_cmap("Reds"), extent=[0, 10, 0, 10])
 
 decorateAxes(ax)
 
 makeOutputs(fig, "2D_imshow_nointerpolation")
 
+fig.set_size_inches(8, 8)
 plt.show()
 
 
@@ -140,4 +142,5 @@ ax.annotate("Best Peak", xy=(xp, yp),  xycoords="data",
 decorateAxes(ax)
 makeOutputs(fig, "2D_contour")
 
+fig.set_size_inches(8, 8)
 plt.show()

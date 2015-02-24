@@ -37,3 +37,24 @@
 - Gallery (fancy examples): http://matplotlib.org/gallery.html
 - more basic examples: http://matplotlib.org/users/screenshots.html
 - http://matplotlib.org/api/pyplot_api.html
+
+
+
+
+### thingsToActuallyMemorize.py
+- once you have data, you need two commands: plot() and show()
+- 5 steps: prepare, plot(), decorate, output to screen and/or file
+
+- QUESTION: what to do to plot data from 2col.dat?
+
+### moreThanOneWayToDoIt.py
+- I showed you the basic way.
+- fig, ax objects for more advanced plots
+- ASIDE: matplotlib FAQ
+- also pylab is a thing
+
+### 2D.py
+- ASIDE: 2D lorentzian
+- ASIDE: meshgrid
+
+###
