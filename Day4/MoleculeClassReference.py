@@ -89,10 +89,16 @@ class Molecule:
         for ii in range(len(cenMass)):
             cenMass[ii] = cenMass[ii] / totalMass
         return cenMass
-
+    def printCoords(self):
+        print "name\tX\tY\tZ"
+        for atm in self.atoms:
+            print atm.element,'\t',atm.x,'\t',atm.y,'\t',atm.z
+    def distance(self,n,m):
+        return np.sqrt((self.atoms[n].x-self.atoms[m].x)**2 + (self.atoms[n].y-self.atoms[m].y)**2 + (self.atoms[n].z-self.atoms[m].z)**2)
 
 Mol = Molecule("CO.out","CO")
 for a in Mol.atoms:
     print a.z
 print Mol.centerofMass()
-
+print Mol.distance(0,1)
+print Mol.printCoords()
