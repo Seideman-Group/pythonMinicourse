@@ -5,6 +5,7 @@ Steps:
     Write some pseudo code
     Possible outlines for these classes are provided below
 """
+
 from atomDict import elementMasses #We've provided a resource to get all the masses of elements you need
 import os
 import numpy as np
@@ -13,10 +14,12 @@ import matplotlib.pyplot as plt
 class Atom:
     """
     Atoms: storage class (i.e. no functions other than __init__)
+    TODO: store these data in the class
         coordinates
         element name
         mass of atom (use atomDict.py to get this info)
     """
+
     def __init__(self, name, X, Y, Z):
         ########### Fill in ################
 
@@ -24,7 +27,7 @@ class Atom:
 class Molecule:
     """
     Molecule: constructs a group of atoms from a .out file
-        data:
+        TODO: store these data:
             number of atoms
             List of Atoms (coordinates and names) - use the Atom class you already made
             Energy
@@ -50,16 +53,19 @@ class Molecule:
                 plot the energy vs computational cycle
                 remember, exclude the last energy from the single point calculation
     """
+
     def __init__(self, filename, moleculeName):
         if not os.path.isfile(filename):
             raise Exception("Molecule object needs a valid filename")
-       ########### Fill in ################
+        ########### Fill in ################
 
-    def centerofMass(self):
-       ########### Fill in ################
-       # Forget what a center of mass is?
-       # Try: http://en.wikipedia.org/wiki/Center_of_mass
+        # Open the file, grab the energies
 
+        # Get the number of atoms
+
+        # Find where in the file the coordinates are stored
+
+        # populate the atom list
 
     def printCoords(self):
        ########### Fill in ################
@@ -67,9 +73,31 @@ class Molecule:
     def distance(self,n,m):
        ########### Fill in ################
 
+    def centerofMass(self):
+       ########### Fill in ################
+       # Forget what a center of mass is?
+       # Try: http://en.wikipedia.org/wiki/Center_of_mass
+
     def plotEnergyConvergence(self):
         ########### Fill in ################
 
 
 
 # Test the class
+# Note: these are our tests of how we wrote the class; your implementation may
+# be different and so may your tests.
+
+Mol = Molecule("CO.out","CO")
+
+for a in Mol.atoms:
+    print a.z
+
+Mol.printCoords()
+
+print Mol.distance(0,1)
+
+print Mol.centerofMass()
+
+Mol.plotEnergyConvergence()
+
+# do the same for CHI3

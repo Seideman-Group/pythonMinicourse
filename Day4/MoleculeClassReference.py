@@ -5,6 +5,7 @@ Steps:
     Write some pseudo code
     Possible outlines for these classes are provided below
 """
+
 from atomDict import elementMasses #We've provided a resource to get all the masses of elements you need
 import os
 import numpy as np
@@ -88,6 +89,16 @@ class Molecule:
             z = float(atmLine[4])
             self.atoms.append( Atom(name,x,y,z) )
 
+    def printCoords(self):
+        print "name\tX\t\tY\t\tZ"
+        for atm in self.atoms:
+            print atm.element,'\t',atm.x,'\t',atm.y,'\t',atm.z
+            # print "%s\t%.6f\t%.6f\t%.6f" % (atm.element,atm.x,atm.y,atm.z) # Alternate printing method #1
+            # print "{name:^15}{x:>15}{y:>15}{z:>15}".format(name=atm.element,x=atm.x,y=atm.y,z=atm.z) # Alternate printing method #2
+
+    def distance(self,n,m):
+        return np.sqrt((self.atoms[n].x-self.atoms[m].x)**2 + (self.atoms[n].y-self.atoms[m].y)**2 + (self.atoms[n].z-self.atoms[m].z)**2)
+
     def centerofMass(self):
         cenMass = np.zeros(3)
         totalMass = 0.0
@@ -99,16 +110,6 @@ class Molecule:
         for ii in range(len(cenMass)):
             cenMass[ii] = cenMass[ii] / totalMass
         return cenMass
-
-    def printCoords(self):
-        print "name\tX\t\tY\t\tZ"
-        for atm in self.atoms:
-            print atm.element,'\t',atm.x,'\t',atm.y,'\t',atm.z
-            # print "%s\t%.6f\t%.6f\t%.6f" % (atm.element,atm.x,atm.y,atm.z) # Alternate printing method #1
-            # print "{name:^15}{x:>15}{y:>15}{z:>15}".format(name=atm.element,x=atm.x,y=atm.y,z=atm.z) # Alternate printing method #2
-
-    def distance(self,n,m):
-        return np.sqrt((self.atoms[n].x-self.atoms[m].x)**2 + (self.atoms[n].y-self.atoms[m].y)**2 + (self.atoms[n].z-self.atoms[m].z)**2)
 
     def plotEnergyConvergence(self):
         inFile = open(self.source)
