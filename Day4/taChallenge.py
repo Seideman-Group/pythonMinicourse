@@ -9,6 +9,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 #### define class
+# note: normally you would put the class in a separate file, but we are keeping
+# it in this script so that less of you run into problems with Canopy while
+# editing the class.
 
 class TASpectrum:
     def __init__(self, fileName):
