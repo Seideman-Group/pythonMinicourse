@@ -53,7 +53,9 @@ class Molecule:
                 plot the energy vs computational cycle
                 remember, exclude the last energy from the single point calculation
     """
-
+    #Hint: Here are some terms you can search for (ctrl-F or cmd-F) in the output files as you try to make heads or tails of these things.
+    #["Optimization Cycle:","OPTIMIZATION CONVERGED ", "Energy is", "Geometry Optimization Parameters", "User input"]
+    #These may not be the key terms you end up using in your code, but they are intended to help you understand the structure of the file.
     def __init__(self, filename, moleculeName):
         if not os.path.isfile(filename):
             raise Exception("Molecule object needs a valid filename")
